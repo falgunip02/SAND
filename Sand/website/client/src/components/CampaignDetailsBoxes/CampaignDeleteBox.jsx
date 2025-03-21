@@ -6,7 +6,7 @@ const CampaignDeleteBox = ({ campaignId, title, imgSrc, setActiveTab }) => {
   const handleDeleteClient = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:8000/api/v1/admin/deleteCampaign",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/deleteCampaign",
         {
           data: { campaignId },
         }

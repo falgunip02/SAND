@@ -7,25 +7,6 @@ const client = require("../models/client.model");
 // const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 
-const generateAccessAndRefreshTokens = async (email) => {
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      throw new apiError(404, "User not found");
-    }
-
-    const accessToken = user.generateAccessToken();
-    const refreshToken = user.generateRefreshToken();
-
-    user.refreshToken = refreshToken;
-    await user.save({ validateBeforeSave: false });
-
-    return { accessToken, refreshToken };
-  } catch (error) {
-    throw new apiError(500, "Failed to generate tokens");
-  }
-};
-
 // Controller: Create New User
 const createNewUser = asyncHandler(async (req, res) => {
   const { name, surname, email, password, role } = req.body;
@@ -115,8 +96,9 @@ const loginUser = asyncHandler(async (req, res) => {
 
   const options = {
     httpOnly: true,
-    secure: process.env.NODE_ENV !== "development",
-    sameSite: "none",
+    secure: true, // Force HTTPS (Render/Heroku/Vercel always use HTTPS)
+    sameSite: "none", // Required for cross-origin cookies
+    domain: ".onrender.com" // Add this for shared domain cookies
   };
 
   res
@@ -152,6 +134,38 @@ const registerUser = asyncHandler(async (req, res) => {
     .status(201)
     .json(new apiResponse(201, createdUser, "User successfully registered"));
 });
+
+
+
+
+const generateAccessAndRefreshTokens = async (email) => {
+  try {
+    const user = await User.findOne({ email });
+    const accessToken = jwt.sign(
+      { _id: user._id, email: user.email },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "15m" } // Verify expiration time
+    );
+    const refreshToken = jwt.sign(
+      { _id: user._id },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "7d" }
+    );
+    
+    // Save refreshToken to user in DB
+    user.refreshToken = refreshToken;
+    await user.save({ validateBeforeSave: false });
+    
+    return { accessToken, refreshToken };
+  } catch (error) {
+    throw new apiError(500, "Token generation failed");
+  }
+};
+
+
+
+
+
 
 // Controller: Refresh Access Token
 const refreshAccessToken = asyncHandler(async (req, res) => {

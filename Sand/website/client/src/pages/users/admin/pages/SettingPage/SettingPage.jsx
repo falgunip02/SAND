@@ -21,7 +21,7 @@ const SettingPage = () => {
     
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/user/changePassword', {
+      const response = await axios.post('https://sand-backend-kwqd.onrender.com/api/v1/user/changePassword', {
         id,
         currentPassword,
         newPassword,

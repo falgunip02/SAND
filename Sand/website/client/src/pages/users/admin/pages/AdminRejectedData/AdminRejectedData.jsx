@@ -19,7 +19,7 @@ const AdminRejectedData = () => {
     setError(null);
     try {
       const response = await fetch(
-        "http://localhost:8000/api/v1/promoter/fetchFormFilledData",
+        "https://sand-backend-kwqd.onrender.com/api/v1/promoter/fetchFormFilledData",
         {
           method: "POST",
           headers: {
@@ -45,7 +45,7 @@ const AdminRejectedData = () => {
   const updateAcceptedData = async (itemId, accepted) => {
     try {
       const response = await fetch(
-        "http://localhost:8000/api/v1/admin/updateAcceptedData",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/updateAcceptedData",
         {
           method: "PATCH",
           headers: {

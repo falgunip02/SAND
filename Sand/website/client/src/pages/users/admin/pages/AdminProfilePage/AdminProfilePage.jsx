@@ -15,7 +15,7 @@ const AdminProfilePage = () => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/v1/user/userDetails", {
+        const response = await fetch("https://sand-backend-kwqd.onrender.com/api/v1/user/userDetails", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id }),
@@ -39,7 +39,7 @@ const AdminProfilePage = () => {
 
   const changePassword = async (currentPassword, newPassword) => {
     try {
-      const response = await fetch("http://localhost:8000/api/v1/user/changePassword", {
+      const response = await fetch("https://sand-backend-kwqd.onrender.com/api/v1/user/changePassword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ currentPassword, newPassword }),

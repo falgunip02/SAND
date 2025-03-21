@@ -22,7 +22,7 @@ const AssignCampaignToMis = () => {
   const fetchMis = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/fetchUsersByRole",{
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/fetchUsersByRole",{
             role:"mis"
         }
       );
@@ -52,7 +52,7 @@ const AssignCampaignToMis = () => {
 //   const assignFormToPromoter = async (promoterId) => {
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:8000/api/v1/admin/assignCreatedForms",
+//         "https://sand-backend-kwqd.onrender.com/api/v1/admin/assignCreatedForms",
 //         {
 //           formId,
 //           promoterId,
@@ -83,7 +83,7 @@ const AssignCampaignToMis = () => {
 //   const unassignFormFromPromoter = async (promoterId) => {
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:8000/api/v1/admin/unassignCreatedForms",
+//         "https://sand-backend-kwqd.onrender.com/api/v1/admin/unassignCreatedForms",
 //         {
 //           formId,
 //           promoterId,
@@ -115,7 +115,7 @@ const AssignCampaignToMis = () => {
 //     e.preventDefault();
 //     try {
 //       const response = await axios.post(
-//         "http://localhost:8000/api/v1/promoter/registerNewPromoter",
+//         "https://sand-backend-kwqd.onrender.com/api/v1/promoter/registerNewPromoter",
 //         {
 //           promoterName,
 //           promoterEmailId,

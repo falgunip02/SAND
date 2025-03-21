@@ -65,7 +65,7 @@ const FormPreview = () => {
   useEffect(() => {
     const fetchFormData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/v1/promoter/fetchFormField", {
+        const response = await fetch("https://sand-backend-kwqd.onrender.com/api/v1/promoter/fetchFormField", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -11,7 +11,7 @@ const CampaignAssignBox = ({ campaignId, title, imgSrc }) => {
 
   const handleAssign = async () => {
     try {
-      const response = await axios.post("http://localhost:8000/api/v1/admin/assignCampaign", {
+      const response = await axios.post("https://sand-backend-kwqd.onrender.com/api/v1/admin/assignCampaign", {
         campaignId,
         misId: selectedMisId,
       });

@@ -21,7 +21,7 @@ const AdminFormDetails = () => {
     const fetchForms = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/v1/admin/fetchFormsForGivenClient",
+          "https://sand-backend-kwqd.onrender.com/api/v1/admin/fetchFormsForGivenClient",
           { campaignId }
         );
         setForms(response.data.data.reverse());

@@ -16,7 +16,7 @@ const AssignCampaignToMis = () => {
       
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/v1/admin/fetchUsersByRole",
+          "https://sand-backend-kwqd.onrender.com/api/v1/admin/fetchUsersByRole",
           { role: "mis" }
         );
 
@@ -44,7 +44,7 @@ const AssignCampaignToMis = () => {
   const assignCampaignToMis = async (misId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/assignCampaignToMis",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/assignCampaignToMis",
         { campaignId, misId }
       );
 
@@ -65,7 +65,7 @@ const AssignCampaignToMis = () => {
   const unAssignCampaignToMis = async (misId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/unassignCampaignToMis",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/unassignCampaignToMis",
         { campaignId, misId }
       );
 

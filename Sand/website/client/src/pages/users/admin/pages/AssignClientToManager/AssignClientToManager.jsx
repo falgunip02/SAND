@@ -16,7 +16,7 @@ const AssignClientToManager = () => {
       
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/v1/admin/fetchUsersByRole",
+          "https://sand-backend-kwqd.onrender.com/api/v1/admin/fetchUsersByRole",
           { role: "manager" }
         );
 
@@ -44,7 +44,7 @@ const AssignClientToManager = () => {
   const AssignClientToManager = async (managerId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/assignClientToManager",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/assignClientToManager",
         { clientId, managerId }
       );
 
@@ -65,7 +65,7 @@ const AssignClientToManager = () => {
   const unAssignClientToManager = async (managerId) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/admin/unassignClientToManager",
+        "https://sand-backend-kwqd.onrender.com/api/v1/admin/unassignClientToManager",
         { clientId, managerId }
       );
 
